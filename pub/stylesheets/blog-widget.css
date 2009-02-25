@@ -1,0 +1,8 @@
+div.blog-widget.blog-mode #bubblehead
+{ 
+  position: relative;
+  margin-left: 40%;
+  margin-right: auto;
+  margin-bottom: -20px;
+  z-index: 50;
+}
