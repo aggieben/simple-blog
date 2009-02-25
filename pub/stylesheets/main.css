@@ -10,6 +10,8 @@ a
   color: #A61E2E;
 }
 
+#root { position: relative; }
+
 .view
 {
   background: #ecf8d7 url(/weblocks-common/pub/images/widget/top_background.png) repeat-x;

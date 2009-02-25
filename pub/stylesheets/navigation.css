@@ -1,94 +1,40 @@
-
-.menu
-{
-  width: 15em;
-  background: #d8eaf8 url(/weblocks-common/pub/images/widget/menu/top_background.png) repeat-x;
+#MENU-navigation
+{ 
+  width: auto;
+  float: right;
+  position: absolute;
+  top: 0px;
+  right: 1px;
 }
 
-.menu h1
+#MENU-navigation h1
 {
-  background: #d8eaf8;
+  display: none;
 }
 
-.menu .extra-top-1
-{
-  background: url(/weblocks-common/pub/images/widget/menu/top_left.png) no-repeat top left;
+#MENU-navigation ul li
+{ 
+  display: inline;
 }
 
-.menu .extra-top-2
-{
-  background: url(/weblocks-common/pub/images/widget/menu/top_right.png) no-repeat top right;
-  border-bottom-color: #bfd9ec;
+#MENU-navigation a
+{ 
+  display: inline;
 }
 
-.empty-navigation
-{
-  padding-left: 0.5em;
+#MENU-navigation li span span
+{ 
+  width: auto;
+  padding-right: 2px;
+  padding-left: 2px;
+  text-align: center;
 }
 
-.selected-item
-{
-  color: #606060;
-  background-color: #bfd9ec;
+#MENU-navigation li.selected-item
+{ 
+  background: none;
 }
-
-.menu ul li
-{
-  padding-left: 0;
+#MENU-navigation li.selected-item span
+{ 
+  background: none;
 }
-
-.menu ul li.selected-item
-{
-  padding-left: 0.5em;
-}
-
-.menu ul li.selected-item span
-{
-  background: url(/weblocks-common/pub/images/widget/menu/arrow.png) no-repeat center left;
-  padding-left: 1em;
-}
-
-.menu h1, .view .empty-navigation, .menu ul li
-{
-  border-top-color: #f6fbfd;
-  border-bottom-color: #bfd9ec;
-}
-
-.menu h1, .menu .empty-navigation, .menu ul
-{
-  border-left-color: #bfd9ec;
-  border-right-color: #bfd9ec;
-}
-
-.menu .extra-bottom-1
-{
-  background: url(/weblocks-common/pub/images/widget/menu/bottom_background.png) repeat-x top;
-  border-top-color: #f6fbfd;
-}
-
-.menu .extra-bottom-2
-{
-  background: url(/weblocks-common/pub/images/widget/menu/bottom_left.png) no-repeat top left;
-}
-
-.menu .extra-bottom-3
-{
-  background: url(/weblocks-common/pub/images/widget/menu/bottom_right.png) no-repeat top right;
-}
-
-.menu a
-{
-  display: block;
-}
-
-/* IE 6 and 7 hover hack */
-*:first-child+html {} * html {} .menu a
-{
-  height: 1%;
-}
-
-.menu a:hover
-{
-  background-color: #bfd9ec;
-}
-
