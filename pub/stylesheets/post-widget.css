@@ -1,13 +1,3 @@
-div.blog-widget div.post-widget
-{  
-  width: 310px;
-  height: 310px;
-  background-image: url('../images/bubble-310x310.png');
-}
-
-div.blog-widget div.post-widget .view h1
-{ display: none; }
-
 div.blog-widget div.post-widget .view,
 div.blog-widget div.post-widget .view .extra-top-2,
 div.blog-widget div.post-widget .view .extra-top-1,
@@ -20,19 +10,51 @@ div.blog-widget div.post-widget .view .extra-bottom-1
   width: 100%;
 }
 
-div.blog-widget div.post-widget .view
+div.blog-widget div.post-widget .view h1
+{ display: none; }
+
+div.blog-widget div.post-widget .view li span.label
+{ display: none; }
+
+div.blog-widget div.post-widget .view li.title
+{ 
+  font-variant: small-caps;
+  font-style: bold;
+  font-size: large;
+}
+
+div.blog-widget div.post-widget .view li.time
+{ 
+  font-style: oblique;
+}
+
+div.blog-widget div.post-widget .view li.author
+{
+  font-style: italic;
+}
+
+/***********************************************************************/
+
+div.blog-widget.blog-mode div.post-widget
+{  
+  width: 310px;
+  height: 310px;
+  background-image: url('../images/bubble-310x310.png');
+}
+
+div.blog-widget.blog-mode div.post-widget .view
 { 
   position: relative;
   top: 13%;
 }
 
-div.blog-widget div.post-widget .view ul
+div.blog-widget.blog-mode div.post-widget .view ul
 { 
   border: none;
   text-align: center;
 }
 
-div.blog-widget div.post-widget .view li
+div.blog-widget.blog-mode div.post-widget .view li
 {  
   margin-left: auto;
   margin-right: auto;
@@ -41,22 +63,56 @@ div.blog-widget div.post-widget .view li
   border: none;
 }
 
-div.blog-widget div.post-widget .view li span.label
-{ display: none; }
+div.blog-widget.blog-mode div.post-widget .view li.title
+{ 
+  width: 60%;
+}
 
-div.blog-widget div.post-widget .view li.title a
+div.blog-widget.blog-mode div.post-widget .view li.title a
 { 
   color: #79cdcd;
   padding-left: none;
 }
 
-div.blog-widget div.post-widget .view li.short-text
+div.blog-widget.blog-mode div.post-widget .view li.short-text
 { 
   margin-top: 5%;
+  width: 85%;
   height: 150px;
 }
 
-div.blog-widget div.post-widget .view li.time
+/***********************************************************************/
+
+div.blog-widget.post-mode div.post-widget .view ul
 { 
-  font-style: oblique;
+  border: none;
+}
+
+div.blog-widget.post-mode div.post-widget .view li
+{ 
+  border-bottom: none;
+}
+
+div.blog-widget.post-mode div.post-widget .view li.title
+{ 
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+div.blog-widget.post-mode div.post-widget .view li.text
+{ 
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+div.blog-widget.post-mode div.post-widget .view li.author
+{ 
+  float: left;
+  margin-right: 150px;
+}
+
+div.blog-widget.post-mode div.post-widget .view li.time
+{ 
+  width: 100px;
+  float: right;
 }
