@@ -1,0 +1,38 @@
+div.blog-widget div.post-widget
+{  
+  width: 310px;
+  height: 310px;
+  background-image: url('../images/bubble-310x310.png');
+}
+
+div.blog-widget div.post-widget .view h1
+{ display: none; }
+
+div.blog-widget div.post-widget .view,
+div.blog-widget div.post-widget .view .extra-top-2,
+div.blog-widget div.post-widget .view .extra-top-1,
+div.blog-widget div.post-widget .view .extra-bottom-2,
+div.blog-widget div.post-widget .view .extra-bottom-3,
+div.blog-widget div.post-widget .view .extra-bottom-1
+{  
+  border: none;
+  background: none;
+}
+
+div.blog-widget div.post-widget .view ul
+{ 
+  border: none;
+  text-align: center;
+}
+
+div.blog-widget div.post-widget .view li
+{  
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  text-align: center;
+  border: none;
+}
+
+div.blog-widget div.post-widget .view li span.label
+{ display: none; }
