@@ -43,3 +43,20 @@ div.blog-widget div.post-widget .view li
 
 div.blog-widget div.post-widget .view li span.label
 { display: none; }
+
+div.blog-widget div.post-widget .view li.title a
+{ 
+  color: #79cdcd;
+  padding-left: none;
+}
+
+div.blog-widget div.post-widget .view li.short-text
+{ 
+  margin-top: 5%;
+  height: 150px;
+}
+
+div.blog-widget div.post-widget .view li.time
+{ 
+  font-style: oblique;
+}
