@@ -17,6 +17,13 @@ div.blog-widget div.post-widget .view .extra-bottom-1
 {  
   border: none;
   background: none;
+  width: 100%;
+}
+
+div.blog-widget div.post-widget .view
+{ 
+  position: relative;
+  top: 13%;
 }
 
 div.blog-widget div.post-widget .view ul
