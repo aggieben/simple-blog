@@ -39,6 +39,7 @@
 				  :components
 				  ((:file "post")
 				   (:file "blog" 
-					  :depends-on ("post")))
+					  :depends-on ("post"))
+				   (:file "login-maybe"))
 				  :depends-on ("model" "views")))
 			:depends-on ("simple-blog" conf))))

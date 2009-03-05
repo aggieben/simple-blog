@@ -6,7 +6,13 @@
    (name :accessor user-name
 	 :initarg :name
 	 :initform ""
-	 :type string)))
+	 :type string)
+   (email :accessor user-email
+	  :initarg :name
+	  :initform "")
+   (pw-hash :accessor user-pw-hash
+	    :initarg :pw-hash
+	    :initform nil)))
 
 (defun all-users (&rest args)
   (declare (ignore args))

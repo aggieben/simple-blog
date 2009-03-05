@@ -1,8 +1,13 @@
 (in-package :simple-blog)
 
-(defview user-table-view (:type table :inherit-from '(:scaffold user)))
-(defview user-data-view (:type data :inherit-from '(:scaffold user)))
-(defview user-form-view (:type form :inherit-from '(:scaffold user)))
+(defview user-table-view (:type table :inherit-from '(:scaffold user))
+  (pw-hash :hidep t))
+
+(defview user-data-view (:type data :inherit-from '(:scaffold user))
+  (pw-hash :hidep t))
+
+(defview user-form-view (:type form :inherit-from '(:scaffold user))
+  (pw-hash ))
 
 (defview post-table-view (:type table :inherit-from '(:scaffold post)))
 

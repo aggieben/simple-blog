@@ -15,11 +15,19 @@
     :init-user-session 'simple-blog::init-user-session
     :autostart nil                   ;; have to start the app manually
     :dependencies '((:stylesheet "navigation"))
-    :ignore-default-dependencies nil) ;; accept the defaults
+    :ignore-default-dependencies nil
+    :debug t) ;; accept the defaults
+
+(defvar *msg-log-path* 
+  #p"/tmp/simple-blog-msg.log")
+(defvar *access-log-path*
+  #p"/tmp/simple-blog-access.log")
 
 (defun start-simple-blog (&rest args)
   "Starts the application by calling 'start-weblocks' with appropriate
 arguments."
+  (setf hunchentoot:*message-log-pathname* *msg-log-path*)
+  (setf hunchentoot:*access-log-pathname* *access-log-path*)
   (apply #'start-weblocks args)
   (start-webapp 'simple-blog))
 

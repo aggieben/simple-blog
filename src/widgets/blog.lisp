@@ -8,8 +8,8 @@
 		 post when the blog is in :POST mode")
    (posts :accessor posts
 	  :initarg :posts
-	  :initform (make-instance 'composite)
-	  :documentation "composite widget that contains a POST-WIDGET
+	  :initform (make-instance 'widget)
+	  :documentation "widget that contains a POST-WIDGET
 	  for each post of the blog")
    (mode :accessor mode
 	 :initarg :mode
@@ -56,7 +56,7 @@
   (:documentation "Reset the list of post widgets from the posts in
   the database.  This function is called by BLOG-ACTION-BLOG-MODE.")
   (:method ((blog-widget blog-widget))
-    (setf (composite-widgets (posts blog-widget))
+    (setf (widget-children (posts blog-widget))
 	  (mapcar (lambda (post)
 		    (blog-make-post-widget blog-widget post))
 		  (all-posts)))))
@@ -93,4 +93,5 @@
 		   :src "/pub/images/bubblehead.png"))))))
 
 (defmethod render-widget-body ((obj blog-widget) &key)
+  (hunchentoot:log-message :debug "rendering blog widget")
   (render-blog obj (mode obj)))

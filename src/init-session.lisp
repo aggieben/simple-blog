@@ -3,5 +3,5 @@
 
 ;; Define callback function to initialize new sessions
 (defun init-user-session (comp)
-  (setf (composite-widgets comp)
+  (setf (widget-children comp)
 	(make-main-page)))

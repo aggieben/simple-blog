@@ -1,9 +1,15 @@
 (in-package :simple-blog)
 
 (defun make-main-page ()
-  (make-navigation 'navigation
-		   'main (make-blog-widget)
-		   'admin (make-admin-page)))
+  (hunchentoot:log-message :debug "creating main page")
+  (let ((blog (make-blog-widget)))    
+    (make-navigation 'navigation
+		     (list nil blog)
+		     (list 'main blog)
+		     (list 'admin (make-instance 'login-maybe
+						 :on-login #'check-login
+						 :on-success #'login-success
+						 :child-widget (make-admin-page))))))
 
 (defun make-users-gridedit ()
   (make-instance 'gridedit
@@ -28,22 +34,16 @@
 		 :item-form-view 'post-form-view))
 
 (defun make-admin-page ()
-  (make-instance 'composite
-		 :widgets
+  (make-instance 'widget 
+		 :children
 		 (list (make-users-gridedit)
 		       (lambda ()
-			 ;; gridedit widgets were probably not
-			 ;; intended to be put 2 on the same page, so
-			 ;; I add an HR tag between the two
+			 ;; gridedit widgets were probably not intended to be put 2
+			 ;; on the same page, so I add an HR tag between the two
 			 (with-html (:div (:hr :style "margin: 2em;"))))
 		       (make-posts-gridedit))))
 
 (defun make-blog-widget ()
-  (let ((composite
-	 (make-instance
-	  'composite
-	  :widgets (list
-		    (make-instance 'blog-widget
-				   :post-short-view 'post-short-view
-				   :post-full-view 'post-full-view)))))    
-    composite))
+  (make-instance 'blog-widget
+		 :post-short-view 'post-short-view
+		 :post-full-view 'post-full-view))
