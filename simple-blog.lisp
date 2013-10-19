@@ -2,6 +2,8 @@
 (defpackage #:simple-blog
   (:use :cl :weblocks :cl-who
 	:metabang.utilities)
+  (:import-from :weblocks-stores :class-store :find-persistent-objects)
+  (:import-from :weblocks-util :safe-apply)
   (:documentation
    "A web application based on Weblocks."))
 
@@ -26,8 +28,6 @@
 (defun start-simple-blog (&rest args)
   "Starts the application by calling 'start-weblocks' with appropriate
 arguments."
-  (setf hunchentoot:*message-log-pathname* *msg-log-path*)
-  (setf hunchentoot:*access-log-pathname* *access-log-path*)
   (apply #'start-weblocks args)
   (start-webapp 'simple-blog))
 

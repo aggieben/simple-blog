@@ -93,5 +93,5 @@
 		   :src "/pub/images/bubblehead.png"))))))
 
 (defmethod render-widget-body ((obj blog-widget) &key)
-  (hunchentoot:log-message :debug "rendering blog widget")
+  (hunchentoot:log-message* :debug "rendering blog widget")
   (render-blog obj (mode obj)))

@@ -5,7 +5,23 @@ function updateElementBody(element, newBody) {
 }
 
 function updateElement(element, newElement) {
-    element.replace(newElement);
+  var parent = element.parentNode;
+  parent.replaceChild(newElement[0], element);
+
+  if(element.next()){
+    var next = element.next();
+    var insertMethod =  function(newEl){
+      parent.insertBefore(newEl, next);
+    };
+  }else{
+    var insertMethod = function(newEl){
+      parent.appendChild(newEl);
+    };
+  }
+
+  for(var i=1;i < newElement.length - 1;i++){
+    insertMethod(newElement[i]);
+  }
 }
 
 function selectionEmpty() {
@@ -50,12 +66,8 @@ Ajax.Responders.register({
 function onActionSuccess(transport) {
     // Grab json value
     var json;
-    if(Prototype.Browser.WebKit) {
-	// We should sanitize JSON, but at the moment it crashes Safari
-        json = transport.responseText.evalJSON();
-    } else {
-        json = transport.responseText.evalJSON(true);
-    }
+
+    json = transport.responseText.evalJSON(false);
 
     // See if there are redirects
     var redirect = json['redirect'];
@@ -69,12 +81,27 @@ function onActionSuccess(transport) {
 
     // Update dirty widgets
     var dirtyWidgets = json['widgets'];
+    var minTopOffset = document.documentElement.getHeight();
+
     for(var i in dirtyWidgets) {
 	var widget = $(i);
 	if(widget) {
             //console.log("updating widget %s", i);
-	    updateElement(widget, dirtyWidgets[i]);
+	  var el = (new Element('div')).update(dirtyWidgets[i]).childElements();
+	  updateElement(widget, el);
+
+	  el.each(function(th){
+	    var offsetTop = th.cumulativeOffset().top;
+	    if(offsetTop < minTopOffset){
+	      minTopOffset = offsetTop;
+	    }
+	  });
 	}
+    }
+    
+    // Scroll top if some of updated elements is above area viewed by user
+    if(minTopOffset < window.scrollY){
+      new Effect.ScrollTo(document, { duration:0.2 });
     }
 
     execJsonCalls(json['on-load']);
@@ -98,10 +125,18 @@ function onActionFailure() {
 }
 
 function getActionUrl(actionCode, sessionString, isPure) {
-    var url = location.href.sub(/\?.*/, "") + '?' + sessionString + '&action=' + actionCode;
-    if(isPure) {
-	url += '&pure=true';
-    }
+    if (!sessionString) sessionString = "";
+    var scriptName = location.protocol + "//"
+                   + location.hostname
+                   + (location.port ? ":" + location.port : "")
+                   + location.pathname;
+    var query = location.search;
+    var url = scriptName + query + (query ? "&" : "?")
+      + sessionString + (sessionString ? "&" : "") + "action=" + actionCode;
+
+    if(isPure)
+      url += '&pure=true';
+
     return url;
 }
 

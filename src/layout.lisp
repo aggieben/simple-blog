@@ -1,7 +1,7 @@
 (in-package :simple-blog)
 
 (defun make-main-page ()
-  (hunchentoot:log-message :debug "creating main page")
+  (hunchentoot:log-message* :debug "creating main page")
   (let ((blog (make-blog-widget)))    
     (make-navigation 'navigation
 		     (list nil blog)
