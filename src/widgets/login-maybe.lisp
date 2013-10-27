@@ -18,10 +18,10 @@
 (defmethod render-widget-body((self login-maybe) &key &allow-other-keys)
   (cond
     ((authenticatedp)
-     (hunchentoot:log-message :debug "=== authenticated! ===")
+     (hunchentoot:log-message* :debug "=== authenticated! ===")
      (render-widget (login-maybe-child-widget self) :inlinep t))
     (t 
-     (hunchentoot:log-message :debug "=== not authenticated! ==")
+     (hunchentoot:log-message* :debug "=== not authenticated! ==")
      (call-next-method))))
 
 (defun check-login (login-widget credentials-obj)

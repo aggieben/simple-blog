@@ -8,7 +8,7 @@
 	 :initform ""
 	 :type string)
    (email :accessor user-email
-	  :initarg :name
+	  :initarg :email
 	  :initform "")
    (pw-hash :accessor user-pw-hash
 	    :initarg :pw-hash
